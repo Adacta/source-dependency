@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BA9266E1-23BD-4C01-B94D-F54BAF274D7E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SourceDependencyCheck_AD</RootNamespace>
+    <AssemblyName>SourceDependencyCheck_AD</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SkipAssemblyComVisible>true</SkipAssemblyComVisible>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DynamicsPackagesFolder Condition="Exists('$(SYSTEMDRIVE)\AOSService\PackagesLocalDirectory\bin')">$(SYSTEMDRIVE)\AOSService\PackagesLocalDirectory\bin</DynamicsPackagesFolder>
+    <DynamicsPackagesFolder Condition="Exists('J:\AOSService\PackagesLocalDirectory\bin')">J:\AOSService\PackagesLocalDirectory\bin</DynamicsPackagesFolder>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Dynamics.AX.Framework.BestPracticeExtensions">
+      <HintPath>$(DynamicsPackagesFolder)\Microsoft.Dynamics.AX.Framework.BestPracticeExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.AX.Framework.BestPractices.Common">
+      <HintPath>$(DynamicsPackagesFolder)\Microsoft.Dynamics.AX.Framework.BestPractices.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.AX.Framework.Xlnt.XppCore">
+      <HintPath>$(DynamicsPackagesFolder)\Microsoft.Dynamics.AX.Framework.Xlnt.XppCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.AX.Framework.Xlnt.XppCore.Visitors">
+      <HintPath>$(DynamicsPackagesFolder)\Microsoft.Dynamics.AX.Framework.Xlnt.XppCore.Visitors.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.AX.Metadata">
+      <HintPath>$(DynamicsPackagesFolder)\Microsoft.Dynamics.AX.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.AX.Metadata.Core">
+      <HintPath>$(DynamicsPackagesFolder)\Microsoft.Dynamics.AX.Metadata.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.AX.Metadata.Navigation">
+      <HintPath>$(DynamicsPackagesFolder)\Microsoft.Dynamics.AX.Metadata.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.AX.Metadata.Upgrade.Common">
+      <HintPath>$(DynamicsPackagesFolder)\Microsoft.Dynamics.AX.Metadata.Upgrade.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SourceDependencyChanged.cs" />
+    <Compile Include="SourceDependencyCheck.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Messages.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Documentation\OverviewPage.html" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
